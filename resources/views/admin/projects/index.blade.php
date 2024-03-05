@@ -43,10 +43,12 @@
                                     </a>
                                 </td>
                                 <td>
+                                    
                                     <button type="button" class="btn btn-danger" data-bs-toggle="offcanvas"
                                     data-bs-target="#deleteConfirmation{{ $project->slug , $project->title }}">
                                     Elimina
                                     </button>
+
                                 <div class="offcanvas offcanvas-end d" tabindex="-1"
                                     id="deleteConfirmation{{ $project->slug , $project->title }}">
                                     <div class="offcanvas-header">
