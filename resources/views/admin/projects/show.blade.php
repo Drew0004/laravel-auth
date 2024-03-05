@@ -26,22 +26,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                    
                         <tr>
                             <th scope="row">{{ $project->id }}</th>
                             <td>{{ $project->title }}</td>
                             <td>{{ $project->slug }}</td>
                             <td>{{ $project->created_at }}</td>
                             <td>
-                                <a href="{{ route('admin.projects.show', ['project' => $project->slug]) }}" class="btn btn-xs btn-primary">
+                                <a href="{{ route('admin.projects.show', ['project' => $project->slug]) }}"
+                                    class="btn btn-xs btn-primary">
                                     Show
                                 </a>
                             </td>
                         </tr>
-                       
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 @endsection
+
+

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Exception;
 // Helpers
 use Illuminate\Support\Str;
 
@@ -14,10 +15,9 @@ class ProjectController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        {
+    { {
             $projects = Project::all();
-    
+
             return view('admin.projects.index', compact('projects'));
         }
     }
@@ -55,19 +55,25 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project)
+    public function edit(string $slug)
     {
-        
-        
-        return view('admin.projects.edit',compact('project'));
+
+        $project = Project::where('slug', $slug)->firstOrFail();
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, string $slug)
     {
+        $projectData = $request->all();
+        $project = Project::where('slug', $slug)->firstOrFail();
+        $slug = Str::slug($projectData['title']);
+        $projectData['slug'] = $slug;
+        $project->updateOrFail($projectData);
         
+        return redirect()->route('admin.projects.show', ['project' => $project->slug]);
     }
 
     /**
@@ -78,3 +84,7 @@ class ProjectController extends Controller
         //
     }
 }
+
+
+
+
