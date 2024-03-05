@@ -4,19 +4,24 @@
 
 @section('main-content')
     <form>
-  <div class="mb-3">
-    <label for="title" class="form-label">Title</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+  <div>
+                <form action="{{ route('projects.edit') }}" method="POST">
+                    @csrf
+                    <div class="my-3">
+                        <label for="title" class="form-label text-white">Titolo*</label>
+                        <input value="{{ $project->title }}" type="text" class="form-control" id="title" name="title" placeholder="Inserisci il titolo..." maxlength="200" required>
+                    </div>
+                    <div class="my-3">
+                        <label for="description" class="form-label text-white">Descrizione*</label>
+                        <textarea value="{{ $project->description }}" class="form-control" id="description" name="description" rows="3" placeholder="Aggiungi una descrizione" maxlength="1024" required></textarea>
+                    </div>
+                    <div class="my-3">
+                        <label for="client" class="form-label text-white">Cliente*</label>
+                        <input value="{{ $project->client }}" type="text" class="form-control" id="client" name="client" placeholder="Inserisci il cliente..." maxlength="46" required>
+                    </div>
+                    <button class="btn btn-primary" type="submit">
+                        Modifica +
+                    </button>
+                </form>
+            </div>
 @endsection
