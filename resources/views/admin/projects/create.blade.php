@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div>
-                <form action="{{ route('projects.store') }}" method="POST">
+                <form action="{{ route('admin.projects.store') }}" method="POST">
                     @csrf
                     <div class="my-3">
                         <label for="title" class="form-label text-white">Titolo*</label>

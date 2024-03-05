@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+// Helpers
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -33,7 +35,11 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $projectData = $request->all();
+        $slug = Str::slug($projectData['title']);
+        $projectData['slug'] = $slug;
+        $project = Project::create($projectData);
+        return redirect()->route('admin.projects.show', ['project' => $project->slug]);
     }
 
     /**
