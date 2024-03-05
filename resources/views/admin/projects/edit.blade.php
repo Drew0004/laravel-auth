@@ -5,8 +5,9 @@
 @section('main-content')
     <form>
   <div>
-                <form action="{{ route('projects.edit') }}" method="POST">
+                <form action="{{ route('projects.update') }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <div class="my-3">
                         <label for="title" class="form-label text-white">Titolo*</label>
                         <input value="{{ $project->title }}" type="text" class="form-control" id="title" name="title" placeholder="Inserisci il titolo..." maxlength="200" required>

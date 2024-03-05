@@ -37,7 +37,7 @@
                                         Show
                                     </a>
                                 </td>
-                                <td><a class="btn btn-primary" href="{{ route('admin.projects.edit', $project) }}">
+                                <td><a class="btn btn-primary" href="{{ route('admin.projects.edit',['project' => $project->slug]) }}">
                                 Edit</a></td>
                             </tr>
                         @endforeach
