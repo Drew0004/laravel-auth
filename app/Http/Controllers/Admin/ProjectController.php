@@ -11,8 +11,7 @@ use Illuminate\Support\Str;
 
 // Form Requests
 use App\Http\Requests\StoreProjectRequest;
-
-// Form Requests
+use App\Http\Requests\EditProjectRequest;
 
 
 class ProjectController extends Controller
@@ -71,7 +70,7 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(EditprojectRequest $request, string $slug)
+    public function update(EditProjectRequest $request, string $slug)
     {
         $projectData = $request->validated();
         $project = Project::where('slug', $slug)->firstOrFail();
