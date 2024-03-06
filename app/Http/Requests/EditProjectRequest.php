@@ -27,4 +27,16 @@ class EditProjectRequest extends FormRequest
             'client' => 'required|string|max:46',
         ];
     }
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'Errore! Il campo è obbligatorio',
+            'title.max' => 'Errore! Hai inserito troppi caratteri.',
+            'description.required' => 'Errore! Il campo è obbligatorio',
+            'description.max' => 'Errore! Hai inserito troppi caratteri.',
+            'client.required' => 'Errore! Il campo è obbligatorio',
+            'client.max' => 'Errore! Hai inserito troppi caratteri.',
+        ];
+    }
 }
+
