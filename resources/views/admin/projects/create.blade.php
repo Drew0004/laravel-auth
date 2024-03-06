@@ -11,6 +11,15 @@
                         Sei loggato!
                     </h1>
                     <h2 class="text-center my-2">Aggiungi un nuovo progetto</h2>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div>
@@ -18,15 +27,30 @@
                     @csrf
                     <div class="my-3">
                         <label for="title" class="form-label text-white">Titolo*</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Inserisci il titolo..." maxlength="200" required>
+                        <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" placeholder="Inserisci il titolo..." maxlength="200" required value="{{ old('title') }}">
+                        @error('title')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="my-3">
                         <label for="description" class="form-label text-white">Descrizione*</label>
-                        <textarea class="form-control" id="description" name="description" rows="3" placeholder="Aggiungi una descrizione" maxlength="1024" required></textarea>
+                        <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="3" placeholder="Aggiungi una descrizione" maxlength="1024" required>{{ old('description') }}</textarea>
+                        @error('description')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="my-3">
                         <label for="client" class="form-label text-white">Cliente*</label>
-                        <input type="text" class="form-control" id="client" name="client" placeholder="Inserisci il cliente..." maxlength="46" required>
+                        <input type="text" class="form-control @error('client') is-invalid @enderror" id="client" name="client" placeholder="Inserisci il cliente..." maxlength="46" required value="{{ old('client') }}">
+                        @error('client')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <button class="btn btn-primary" type="submit">
                         Aggiungi +

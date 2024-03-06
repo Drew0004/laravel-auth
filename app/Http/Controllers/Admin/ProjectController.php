@@ -9,6 +9,9 @@ use Exception;
 // Helpers
 use Illuminate\Support\Str;
 
+// Form Requests
+use App\Http\Requests\StoreProjectRequest;
+
 class ProjectController extends Controller
 {
     /**
@@ -33,9 +36,9 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
-        $projectData = $request->all();
+        $projectData = $request->validated();
         $slug = Str::slug($projectData['title']);
         $projectData['slug'] = $slug;
         $project = Project::create($projectData);
