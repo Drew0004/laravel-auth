@@ -10,6 +10,8 @@
                     </h1>
                     <br>
                     La welcome page è una pagina pubblica (NON protetta)
+
+                    <a class="btn btn-primary " href="{{ route('projects.index') }}">Vai a tutti i progetti</a>
                 </div>
             </div>
         </div>

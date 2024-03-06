@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.guest')
 
 @section('page-title', $project->title)
 
@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="text-center text-success">
-                        Sei loggato!
+                        Sezione Ospite
                     </h1>
                     <br>
                     Pagina Index
@@ -37,5 +37,3 @@
         </div>
     </div>
 @endsection
-
-
