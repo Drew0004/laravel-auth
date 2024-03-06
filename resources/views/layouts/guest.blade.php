@@ -12,15 +12,7 @@
     </head>
     <body>
         <header>
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container">
                     <a class="navbar-brand" href="/">Template</a>
@@ -61,6 +53,15 @@
                     </div>
                 </div>
             </nav>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </header>
 
         <main class="py-4">
