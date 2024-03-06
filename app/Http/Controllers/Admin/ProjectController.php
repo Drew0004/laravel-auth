@@ -9,6 +9,9 @@ use Exception;
 // Helpers
 use Illuminate\Support\Str;
 
+// Form Requests
+
+
 class ProjectController extends Controller
 {
     /**
@@ -65,9 +68,9 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $slug)
+    public function update(EditprojectRequest $request, string $slug)
     {
-        $projectData = $request->all();
+        $projectData = $request->validated();
         $project = Project::where('slug', $slug)->firstOrFail();
         $slug = Str::slug($projectData['title']);
         $projectData['slug'] = $slug;
